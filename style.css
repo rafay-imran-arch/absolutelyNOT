@@ -1,0 +1,21 @@
+
+
+body {
+    background-color: black;
+    color: white;
+}
+
+#not {
+    color: black;
+    background-color: red;
+
+    border-radius: 5px;
+    border-style: inset;
+    text-align: center;
+    margin: 0 auto;
+    
+
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    
+}

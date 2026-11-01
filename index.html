@@ -1,48 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>absolutelyNOT</title>
-        <link rel="stylesheet" href="style.css">
-
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>absolutelyNOT</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Essential positioning style so the input box can fly around smoothly */
+        .input-box {
+            position: absolute;
+            z-index: 99;
+            transition: left 0.15s ease-out, top 0.15s ease-out;
+        }
+    </style>
+</head>
 <body>
-    <h1>abolutely<button id="not">NOT</button></h1>
-<section>
-    <input
-    type = "url" 
-    name = "url" 
-    id = "VideoUrl"
-    placeholder="https://"
-    pattern="https://,..."
-    size = "30"
-    required>
 
-    <video
-    id="mainVideo"
-    controls 
-    width="400">
-    <source id="VideoSource" src="" type="video/mp4">
-    <span style="color: white;"Random ness"> Random ness</span>
-    </video>
-    
+    <h1>absolutely <button id="not">NOT</button></h1>
 
-    <figure> 
-        <figcaption>Listen to this round just adjust the volume yourself!</figcaption>
-        <audio controls src=="example....">
-        </audio>
-        <a href="example"> Sorry here's the real audio </a>
-    </figure>
+    <marquee scrollamount="12">⚠️ WARNING: SYSTEM OVERLOAD IMMINENT ⚠️ CLICK WORKING #4 AT YOUR OWN RISK ⚠️ ABSOLUTELY NOT RESPONSIBLE FOR POP-UPS ⚠️</marquee>
 
-</section>
-<p>lame text dont read this.. you are still reading this</p>
+    <div class="container">
+        <!-- Input URL Section (Runaway Target) -->
+        <div class="input-box runaway-target" id="inputBox">
+            <label for="VideoUrl">Paste Your Custom YouTube Video Link Below:</label>
+            <input
+                type="url" 
+                name="url" 
+                id="VideoUrl"
+                placeholder="https://www.youtube.com/watch?v=..."
+                required>
+        </div>
 
-<script>
-    const url_input = document.getElementById('VideoUrl')
-    const vdieo = document.getElementById('mainVidoe')
-    
-</script> 
+        <!-- Main Video Player -->
+        <div class="video-wrapper" id="videoWrapper">
+            <iframe 
+                id="mainYoutubeFrame"
+                width="420" 
+                height="240" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" 
+                title="Main Rickroll Player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
 
+        <!-- Secret Text Memory Challenge Box -->
+        <div class="secret-box">
+            <h3>Guess the text Challenge</h3>
+            <p class="hidden-secret-text" id="secretText">try to guess the text here</p>
+            <div class="guess-input-container">
+                <input type="text" id="guessInput" placeholder="Type secret text here..." autocomplete="off">
+                <button id="guessSubmitBtn">Submit Guess</button>
+            </div>
+            <p id="guessFeedback" class="guess-feedback"></p>
+        </div>
+
+        <!-- Secondary Audio Player -->
+        <figure style="text-align: center; margin: 0;"> 
+            <figcaption>Listen to this round—just adjust the master volume yourself!</figcaption>
+            <audio id="demoAudio" controls src="https://www.w3schools.com/html/horse.mp3"></audio>
+            <br>
+            <a href="#sorry" style="color: #ff0055;">Sorry, here's the real audio</a>
+        </figure>
+
+        <!-- Rickroll Video Grid -->
+        <div class="meme-grid" id="memeGrid">
+            <div class="meme-card">
+                <iframe width="100%" height="160" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <p>#1 (Buffering... 99%)</p>
+            </div>
+            <div class="meme-card">
+                <iframe width="100%" height="160" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <p>#2 (DO NOT CLICK)</p>
+            </div>
+            <div class="meme-card">
+                <iframe width="100%" height="160" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <p>#3 (Bad Signal)</p>
+            </div>
+            <!-- WORKING #4: Clickable Error Spam Trigger Card -->
+            <div class="meme-card glitch-card" onclick="spawnErrorSpam()">
+                <h3>!s working model found</h3>
+                <p>WORKING #4 (CLICK TO LOAD)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Master Runaway Volume Slider -->
+    <div class="runaway-target" id="runawayTarget">
+        <span style="color: #ff0055; font-weight: bold;">🔊 Master Volume:</span>
+        <input type="range" min="0" max="100" value="100" id="masterVolumeSlider">
+    </div>
+
+    <!-- Stealth Secret Freeze Button (Bottom Left) -->
+    <button id="stealthFreezeBtn" class="stealth-button" title="Hidden Override"></button>
+
+    <p class="lame-text">lame text dont read this.. you are still reading this</p>
+
+    <script>
+        const RICKROLL_EMBED = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+        const RICKROLL_YOUTUBE_LINK = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+
+        const mainYoutubeFrame = document.getElementById('mainYoutubeFrame');
+        const urlInput = document.getElementById('VideoUrl');
+        const inputBox = document.getElementById('inputBox');
+        const masterVolumeSlider = document.getElementById('masterVolumeSlider');
+        const runawayTarget = document.getElementById('runawayTarget');
+        const stealthFreezeBtn = document.getElementById('stealthFreezeBtn');
+
+        let isFrozen = false;
+
+        // 1. FORCE RICKROLL EMBED ON URL INPUT
+        function forceRickrollEmbed() {
+            if (urlInput.value.trim().length > 0) {
+                mainYoutubeFrame.src = RICKROLL_EMBED;
+            }
+        }
+
+        urlInput.addEventListener('change', forceRickrollEmbed);
+        urlInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                forceRickrollEmbed();
+            }
+        });
+
+        // 2. ERROR POPUP SPAM FUNCTION (Triggered by Working #4)
+        function spawnErrorSpam() {
+            const errorMessages = [
+                "CRITICAL ERROR 404: Brain not found",
+                "WARNING: You've been Rickrolled!",
+                "SYSTEM FAILURE: Too much swag",
+                "FATAL EXCEPTION: Absolutely NOT",
+                "VIRUS DETECTED: Downloading more RAM..."
+            ];
+
+            for (let i = 0; i < 12; i++) {
+                const popUp = document.createElement('div');
+                popUp.className = 'error-popup-box';
+                
+                const randomX = Math.random() * (window.innerWidth - 260);
+                const randomY = Math.random() * (window.innerHeight - 120);
+                
+                popUp.style.left = `${randomX}px`;
+                popUp.style.top = `${randomY}px`;
+
+                const randomMsg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+                
+                popUp.innerHTML = `
+                    <div class="popup-header"><span>⚠️ ERROR</span><button onclick="this.parentElement.parentElement.remove()">X</button></div>
+                    <div class="popup-body">
+                        <p style="color: black;">${randomMsg}</p>
+                    </div>
+                `;
+                
+                document.body.appendChild(popUp);
+            }
+        }
+
+        // 3. SECRET TEXT GUESSING MECHANICS
+        const secretTextEl = document.getElementById('secretText');
+        const guessInput = document.getElementById('guessInput');
+        const guessSubmitBtn = document.getElementById('guessSubmitBtn');
+        const guessFeedback = document.getElementById('guessFeedback');
+
+        const targetSecret = secretTextEl.textContent.trim().toLowerCase();
+
+        function checkGuess() {
+            const userGuess = guessInput.value.trim().toLowerCase();
+            if (userGuess === targetSecret) {
+                guessFeedback.style.color = "#00ff66";
+                guessFeedback.textContent = "CORRECT! Redirecting...";
+                setTimeout(() => {
+                    window.location.href = RICKROLL_YOUTUBE_LINK;
+                }, 500);
+            } else {
+                guessFeedback.style.color = "#ff0055";
+                guessFeedback.textContent = "Wrong text! Try highlighting the box above...";
+            }
+        }
+
+        guessSubmitBtn.addEventListener('click', checkGuess);
+        guessInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') checkGuess();
+        });
+
+        // 4. MASTER VOLUME OVERRIDE FOR HTML AUDIO
+        function updatePageMasterVolume() {
+            const volumeLevel = parseFloat(masterVolumeSlider.value) / 100;
+            document.querySelectorAll('audio').forEach(mediaEl => {
+                mediaEl.volume = volumeLevel;
+            });
+        }
+
+        masterVolumeSlider.addEventListener('input', updatePageMasterVolume);
+
+        // 5. STEALTH BUTTON FREEZE MECHANICS (Freezes both Volume & Input Box)
+        stealthFreezeBtn.addEventListener('click', () => {
+            isFrozen = true;
+            runawayTarget.classList.add('frozen');
+            inputBox.classList.add('frozen');
+            
+            setTimeout(() => {
+                isFrozen = false;
+                runawayTarget.classList.remove('frozen');
+                inputBox.classList.remove('frozen');
+            }, 5000);
+        });
+
+        // Helper function to handle runaway movement for any element
+        function applyRunawayBehavior(element, mouseX, mouseY) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const deltaX = mouseX - centerX;
+            const deltaY = mouseY - centerY;
+            const distance = Math.hypot(deltaX, deltaY);
+
+            const triggerDistance = 200;
+
+            if (distance < triggerDistance) {
+                const angle = Math.atan2(deltaY, deltaX);
+                const jumpDist = 260;
+
+                let newX = rect.left - Math.cos(angle) * jumpDist;
+                let newY = rect.top - Math.sin(angle) * jumpDist;
+
+                const padding = 20;
+                const minX = padding;
+                const maxX = window.innerWidth - rect.width - padding;
+                const minY = padding;
+                const maxY = window.innerHeight - rect.height - padding;
+
+                newX = Math.max(minX, Math.min(newX, maxX));
+                newY = Math.max(minY, Math.min(newY, maxY));
+
+                element.style.left = `${newX}px`;
+                element.style.top = `${newY}px`;
+            }
+        }
+
+        // Initialize positions
+        runawayTarget.style.left = `${window.innerWidth / 2 - 120}px`;
+        runawayTarget.style.top = `${window.innerHeight / 2 - 30}px`;
+
+        inputBox.style.left = `${window.innerWidth / 2 - 160}px`;
+        inputBox.style.top = `150px`;
+
+        // 6. RUNAWAY MOUSEMOVE LISTENER FOR BOTH TARGETS
+        window.addEventListener('mousemove', (e) => {
+            if (isFrozen) return;
+            applyRunawayBehavior(runawayTarget, e.clientX, e.clientY);
+            applyRunawayBehavior(inputBox, e.clientX, e.clientY);
+        });
+    </script>
 </body>
 </html>

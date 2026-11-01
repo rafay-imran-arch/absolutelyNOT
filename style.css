@@ -1,21 +1,214 @@
-
+* {
+    box-sizing: border-box;
+}
 
 body {
-    background-color: black;
-    color: white;
+    background-color: orange;
+    color: orange;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.8rem;
+    color: #ffffff;
+    text-shadow: 2px 2px #ff0055;
+    margin-bottom: 20px;
 }
 
 #not {
     color: black;
     background-color: red;
-
     border-radius: 5px;
     border-style: inset;
-    text-align: center;
-    margin: 0 auto;
-    
-
     font-size: 30px;
     font-family: 'Courier New', Courier, monospace;
-    
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 2px 10px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+input[type="url"],
+input[type="text"] {
+    background-color: #111;
+    color: orange;
+    border: 2px dashed orange;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+    font-family: inherit;
+    text-align: center;
+}
+
+/* Secret Challenge Box */
+.secret-box {
+    background: #080808;
+    border: 2px solid #222;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.secret-box h3 {
+    margin-top: 0;
+    color: orange;
+}
+
+.hidden-secret-text {
+    color: #0d0d0d;
+    background-color: #080808;
+    font-size: 1.1rem;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    user-select: all;
+    transition: color 0.3s ease;
+}
+
+.hidden-secret-text::selection {
+    background: #ff0055;
+    color: #ffffff;
+}
+
+.guess-input-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.guess-input-container input {
+    width: 65%;
+}
+
+.guess-input-container button {
+    background: #ff0055;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.guess-input-container button:hover {
+    background: #cc0044;
+}
+
+.guess-feedback {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    height: 18px;
+}
+
+video {
+    border: 3px solid #ff0055;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+    border-radius: 8px;
+    background-color: #000;
+}
+
+/* High-Speed Master Runaway Volume Box */
+.runaway-target {
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1a001a;
+    padding: 12px 18px;
+    border: 2px solid #ff0055;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+    cursor: pointer;
+    user-select: none;
+    /* Ultra-fast 0.03s speed response */
+    transition: left 0.03s cubic-bezier(0.1, 0.9, 0.2, 1), top 0.03s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+/* Visual state when volume box is frozen by the hidden button */
+.runaway-target.frozen {
+    border-color: #00ff66;
+    box-shadow: 0 0 25px rgba(0, 255, 102, 0.8);
+}
+
+/* Stealth Button in Bottom-Left Corner */
+.stealth-button {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: red; /* Identical match to body background */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.stealth-button:active {
+    background-color: #080808;
+}
+
+.meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.meme-card {
+    background: #111;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.meme-card video {
+    width: 100%;
+    height: auto;
+    border: none;
+}
+
+marquee {
+    width: 100%;
+    background: #ff0055;
+    color: white;
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 15px 0;
+}
+
+.lame-text {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 30px;
 }
